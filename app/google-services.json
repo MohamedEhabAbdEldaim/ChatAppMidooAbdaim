@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "67044301951",
+    "firebase_url": "https://midooabdaim-chat.firebaseio.com",
+    "project_id": "midooabdaim-chat",
+    "storage_bucket": "midooabdaim-chat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:67044301951:android:aed8fc737490b29b37734a",
+        "android_client_info": {
+          "package_name": "com.midooabdaim.midooabdaimchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "67044301951-udrd330cfbvmp0mcbcvdpd7fcqk7t5sv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.midooabdaim.midooabdaimchat",
+            "certificate_hash": "409e5eb4dce6d3e49d8ad8e536f3bfd151040b6d"
+          }
+        },
+        {
+          "client_id": "67044301951-hdj4e74j9h9lnj3pi3b7mhikvom1m7ed.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzWtj3EgYjZHxzXQ_s7P8uC44Q6vytCoE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "67044301951-hdj4e74j9h9lnj3pi3b7mhikvom1m7ed.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

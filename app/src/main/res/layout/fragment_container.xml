@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d100"
+        android:background="@color/move"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/fragment_container_img_user"
+            android:layout_width="@dimen/d60"
+            android:layout_height="@dimen/d60"
+            android:layout_marginStart="@dimen/d20"
+            android:layout_marginTop="@dimen/d20"
+            android:src="@drawable/ic_imgprofile"
+            app:civ_border_width="@dimen/d2" />
+
+        <TextView
+            android:id="@+id/fragment_container_txt_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/d20"
+            android:layout_marginTop="@dimen/d36"
+            android:fontFamily="@font/novusbold"
+            android:padding="@dimen/d2"
+            android:text="@string/username"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints" />
+
+    </LinearLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/fragment_container_tab_layout_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/greydark"
+        app:tabSelectedTextColor="@color/Red"
+        app:tabTextColor="@android:color/black"></com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/fragment_container_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
+</LinearLayout>

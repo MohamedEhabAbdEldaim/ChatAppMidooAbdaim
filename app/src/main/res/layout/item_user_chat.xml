@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/d8"
+    android:layout_marginTop="@dimen/d8"
+    android:layout_marginEnd="@dimen/d8"
+    android:background="@drawable/shape_card_view"
+    android:orientation="vertical"
+    android:padding="5dp"
+    app:cardCornerRadius="@dimen/d20">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d80">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/item_user_chat_img_user"
+                android:layout_width="@dimen/d50"
+                android:layout_height="@dimen/d50"
+                android:layout_marginStart="@dimen/d14"
+                android:layout_marginTop="@dimen/d14"
+                android:src="@drawable/ic_imgprofile"
+                app:civ_border_width="@dimen/d2" />
+
+            <TextView
+                android:id="@+id/item_user_chat_txt_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/d14"
+                android:layout_marginTop="@dimen/d24"
+                android:fontFamily="@font/novusbold"
+                android:padding="@dimen/d2"
+                android:text="@string/username"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/item_user_chat_have_message"
+                android:layout_width="@dimen/d30"
+                android:layout_height="@dimen/d30"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/d10"
+                android:layout_marginEnd="@dimen/d10"
+                android:contentDescription="@string/newmessage"
+                android:src="@drawable/ic_havemessage"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/item_user_chat_ll_message"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d20"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/item_user_chat_sender_reciever"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/d8"
+            android:text="@string/Lastmessage"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/item_user_chat_last_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/d8"
+            android:ellipsize="end"
+            android:maxEms="5"
+            android:maxLines="1"
+            android:text="@string/Lastmessage"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints" />
+
+
+        <TextView
+            android:id="@+id/item_user_chat_last_message_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/d8"
+            android:text="@string/Lastmessage"
+            android:textAlignment="center"
+            android:textColor="@color/green"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints" />
+
+
+    </LinearLayout>
+
+</LinearLayout>
+

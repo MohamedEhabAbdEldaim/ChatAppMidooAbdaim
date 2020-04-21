@@ -1,0 +1,91 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="text_input">
+
+        <item name="android:background">@drawable/shape_et</item>
+
+        <item name="android:textColor">@color/colorAccent</item>
+
+        <item name="android:textColorHint">@color/colorAccent</item>
+
+        <item name="android:layout_marginTop">@dimen/d4</item>
+
+        <item name="android:layout_marginBottom">@dimen/d4</item>
+
+        <item name="android:layout_marginStart">@dimen/d12</item>
+
+        <item name="android:layout_marginEnd">@dimen/d12</item>
+
+        <item name="android:padding">@dimen/d4</item>
+
+        <item name="android:imeOptions">actionNext</item>
+
+    </style>
+
+    <style name="view">
+
+        <item name="android:background">@color/move</item>
+
+        <item name="android:layout_marginTop">@dimen/d4</item>
+
+        <item name="android:layout_marginStart">@dimen/d8</item>
+
+        <item name="android:layout_marginEnd">@dimen/d8</item>
+
+        <item name="android:padding">@dimen/d4</item>
+
+    </style>
+
+    <style name="error_appearance">
+        <item name="android:textColor">@color/txt_color2</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColorHighlight">@color/txt_color2</item>
+        <item name="android:textColorHint">@color/txt_color2</item>
+        <item name="android:textColorLink">@color/txt_color2</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="text_input_edit">
+        <item name="android:background">@null</item>
+        <item name="android:textColor">@color/txt_color</item>
+        <item name="android:drawablePadding">@dimen/d8</item>
+        <item name="android:textColorHint">@color/txt_color</item>
+        <item name="android:layout_marginTop">@dimen/d4</item>
+        <item name="android:layout_marginBottom">@dimen/d4</item>
+        <item name="android:layout_marginStart">@dimen/d8</item>
+        <item name="android:layout_marginEnd">@dimen/d8</item>
+        <item name="android:padding">@dimen/d4</item>
+    </style>
+
+    <style name="btn">
+        <item name="android:layout_marginTop">@dimen/d8</item>
+        <item name="android:layout_marginBottom">@dimen/d8</item>
+        <item name="android:background">@drawable/shape_et</item>
+        <item name="android:textColor">@color/txt_color</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="text_view">
+        <item name="android:textColor">@color/txt_color</item>
+        <item name="android:layout_marginTop">@dimen/d4</item>
+        <item name="android:layout_marginStart">@dimen/d4</item>
+        <item name="android:layout_marginEnd">@dimen/d4</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingTop">@dimen/d8</item>
+        <item name="android:paddingStart">@dimen/d4</item>
+        <item name="android:paddingEnd">@dimen/d4</item>
+        <item name="android:paddingBottom">@dimen/d8</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+</resources>

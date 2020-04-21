@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d100"
+            android:background="@color/move"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/fragment_message_img_user"
+                android:layout_width="@dimen/d60"
+                android:layout_height="@dimen/d60"
+                android:layout_marginStart="@dimen/d20"
+                android:layout_marginTop="@dimen/d20"
+                android:src="@drawable/ic_imgprofile"
+                app:civ_border_width="@dimen/d2" />
+
+            <TextView
+                android:id="@+id/fragment_message_txt_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/d20"
+                android:layout_marginTop="@dimen/d36"
+                android:fontFamily="@font/novusbold"
+                android:padding="@dimen/d2"
+                android:text="@string/username"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fragment_message_recycler_view_messages"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/d70">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/fragment_message_txt_blockTV"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d70"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:text="@string/cantreplay"
+        android:textSize="@dimen/txt_20sp"
+        android:visibility="gone" />
+
+
+    <LinearLayout
+        android:id="@+id/fragment_message_message_panel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d70"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/d10"
+       >
+
+        <Button
+            android:id="@+id/fragment_message_btn_send_photo"
+            android:layout_width="@dimen/d40"
+            android:layout_height="@dimen/d40"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/d5"
+            android:background="@drawable/ic_sendphotobtn" />
+
+
+        <EditText
+            android:id="@+id/fragment_message_et_type_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="@string/TypeMessage"
+            android:textSize="@dimen/txt_20sp" />
+
+
+        <Button
+            android:id="@+id/fragment_message_btn_send"
+            android:layout_width="@dimen/d40"
+            android:layout_height="@dimen/d40"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_sendbtn" />
+    </LinearLayout>
+
+</RelativeLayout>

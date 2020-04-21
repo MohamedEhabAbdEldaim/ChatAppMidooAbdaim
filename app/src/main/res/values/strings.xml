@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Midooabdaim Chat</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forgetpass">Forget Password ?</string>
+    <string name="creataccount">"Not Have Account ? Click Her To Register "</string>
+    <string name="loginin">Login In</string>
+    <string name="register">"Register "</string>
+    <string name="username">Name</string>
+    <string name="confirmpass">Confirm password</string>
+    <string name="sign">Sign Up</string>
+    <string name="empty">Failde is Required</string>
+    <string name="week">password is weak</string>
+    <string name="notmatch">" doesn't match password"</string>
+    <string name="exist">This Email Already Exists</string>
+    <string name="wait">waiting</string>
+    <string name="createdaccount">Account Created Successfully</string>
+    <string name="welcome">Welcome Back</string>
+    <string name="nointernet">Please Connect the Internet</string>
+    <string name="chats">Chats</string>
+    <string name="users">Users</string>
+    <string name="groups">Groups</string>
+    <string name="profile">Profile</string>
+    <string name="nodatausers">"don't found users "</string>
+    <string name="Lastmessage">Last Massage</string>
+    <string name="newmessage">un readed message</string>
+    <string name="TypeMessage">Type Message</string>
+    <string name="cantreplay">"You can't reply to this conversation anymore "</string>
+    <string name="Logout">log out</string>
+    <string name="default_notification_channel_id">midooabdaim</string>
+    <string name="faild">Failed !</string>
+    <string name="canceled">canceled</string>
+    <string name="Block">Block</string>
+    <string name="UnBlock">UnBlock</string>
+    <string name="search">search</string>
+    <string name="noImage">No Image Selected</string>
+</resources>
