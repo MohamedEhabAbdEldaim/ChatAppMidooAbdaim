@@ -135,4 +135,5 @@
     <dimen name="d200">200dp</dimen>
     <dimen name="d300">300dp</dimen>
     <dimen name="d250">250dp</dimen>
+    <dimen name="d220">220dp</dimen>
 </resources>

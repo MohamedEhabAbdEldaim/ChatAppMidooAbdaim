@@ -27,9 +27,11 @@ import com.midooabdaim.midooabdaimchat.adapter.ViewPagerWithFragmentAdapter;
 import com.midooabdaim.midooabdaimchat.data.model.User;
 import com.midooabdaim.midooabdaimchat.ui.activity.MainActivity;
 import com.midooabdaim.midooabdaimchat.ui.fragment.BaseFragment;
+import com.midooabdaim.midooabdaimchat.ui.fragment.homeCycle.ProfileFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -37,6 +39,7 @@ import static com.midooabdaim.midooabdaimchat.helper.Constant.Default_Image;
 import static com.midooabdaim.midooabdaimchat.helper.Constant.Users_Data;
 import static com.midooabdaim.midooabdaimchat.helper.HelperMethod.customToast;
 import static com.midooabdaim.midooabdaimchat.helper.HelperMethod.onLoadImageFromUrl;
+import static com.midooabdaim.midooabdaimchat.helper.HelperMethod.replaceFragment;
 import static com.midooabdaim.midooabdaimchat.helper.InternetState.isActive;
 
 /**
@@ -71,7 +74,6 @@ public class continerFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_container, container, false);
         unbinder = ButterKnife.bind(this, view);
         initView();
-        setHasOptionsMenu(true);
 
         viewPagerWithFragmentAdapter = new ViewPagerWithFragmentAdapter(getChildFragmentManager(), 1, getActivity());
         fragmentContainerViewPager.setAdapter(viewPagerWithFragmentAdapter);
@@ -115,31 +117,6 @@ public class continerFragment extends BaseFragment {
     }
 
     @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.logout, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.logout_menu_logout:
-               /* if (!isActive(getActivity())) {
-                    customToast(getActivity(), getString(R.string.nointernet), true);
-                } else {*/
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                startActivity(intent);
-                getActivity().finish();
-                //   }
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    @Override
     public void onStart() {
         intialFragment();
         super.onStart();
@@ -157,4 +134,8 @@ public class continerFragment extends BaseFragment {
         getActivity().finish();
     }
 
+    @OnClick(R.id.fragment_container_img_user)
+    public void onViewClicked() {
+        replaceFragment(getActivity().getSupportFragmentManager(), R.id.home_activity_fl_id, new ProfileFragment());
+    }
 }

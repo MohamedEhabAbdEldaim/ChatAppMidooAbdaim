@@ -37,4 +37,11 @@
     <string name="UnBlock">UnBlock</string>
     <string name="search">search</string>
     <string name="noImage">No Image Selected</string>
+    <string name="changeusername">Change User Name</string>
+    <string name="changepassword">Change Password</string>
+    <string name="change">Change</string>
+    <string name="cancel">cancel</string>
+    <string name="addusername">Please Enter New User Name</string>
+    <string name="newpassword">New password</string>
+    <string name="confirmnewpassword">Confirm New Password</string>
 </resources>

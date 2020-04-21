@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d20"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/d20">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/fragment_profile_image_profile"
+                android:layout_width="@dimen/d220"
+                android:layout_height="@dimen/d220"
+                android:src="@drawable/ic_imgprofile"
+                app:civ_border_width="@dimen/d2" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/fragment_profile_txt_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/d20"
+                    android:fontFamily="@font/novusbold"
+                    android:text="@string/username"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="@dimen/d1"
+                    android:layout_marginTop="@dimen/d4"
+                    android:layout_marginEnd="@dimen/d1"
+                    android:background="@color/green" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/fragment_profile_txt_change_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/d16"
+            android:layout_marginTop="@dimen/d16"
+            android:fontFamily="@font/novusbold"
+            android:text="@string/changeusername"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+
+            />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/d16"
+            android:layout_marginTop="@dimen/d4"
+            android:layout_marginEnd="@dimen/d16"
+            android:background="@color/green" />
+
+        <TextView
+            android:id="@+id/fragment_profile_txt_change_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/d16"
+            android:layout_marginTop="@dimen/d16"
+            android:fontFamily="@font/novusbold"
+            android:text="@string/changepassword"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+
+            />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/d16"
+            android:layout_marginTop="@dimen/d4"
+            android:layout_marginEnd="@dimen/d16"
+            android:background="@color/green" />
+
+        <TextView
+            android:id="@+id/fragment_profile_txt_log_out"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/d16"
+            android:layout_marginTop="@dimen/d16"
+            android:fontFamily="@font/novusbold"
+            android:text="@string/Logout"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+
+            />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/d16"
+            android:layout_marginTop="@dimen/d4"
+            android:layout_marginEnd="@dimen/d16"
+            android:background="@color/green" />
+    </LinearLayout>
+</ScrollView>
