@@ -46,11 +46,11 @@
         app:tabSelectedTextColor="@color/Red"
         app:tabTextColor="@android:color/black"></com.google.android.material.tabs.TabLayout>
 
-    <androidx.viewpager.widget.ViewPager
+    <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/fragment_container_view_pager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
+        android:layout_height="match_parent"
+        android:orientation="horizontal"/>
 
 
 </LinearLayout>

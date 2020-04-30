@@ -55,7 +55,7 @@
             android:id="@+id/fragment_profile_txt_change_user_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/d16"
+            android:paddingStart="@dimen/d16"
             android:layout_marginTop="@dimen/d16"
             android:fontFamily="@font/novusbold"
             android:text="@string/changeusername"
@@ -77,7 +77,7 @@
             android:id="@+id/fragment_profile_txt_change_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/d16"
+            android:paddingStart="@dimen/d16"
             android:layout_marginTop="@dimen/d16"
             android:fontFamily="@font/novusbold"
             android:text="@string/changepassword"
@@ -99,14 +99,13 @@
             android:id="@+id/fragment_profile_txt_log_out"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/d16"
             android:layout_marginTop="@dimen/d16"
             android:fontFamily="@font/novusbold"
             android:text="@string/Logout"
             android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold"
-
+            android:paddingStart="@dimen/d16"
             />
 
         <ImageView

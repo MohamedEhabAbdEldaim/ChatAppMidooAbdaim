@@ -44,4 +44,6 @@
     <string name="addusername">Please Enter New User Name</string>
     <string name="newpassword">New password</string>
     <string name="confirmnewpassword">Confirm New Password</string>
+    <string name="passwordupdated">User Password Updated.</string>
+    <string name="passwordnotcorrect">Old Password Not Ok</string>
 </resources>

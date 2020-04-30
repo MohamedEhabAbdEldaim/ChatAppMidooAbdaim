@@ -13,8 +13,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -24,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.midooabdaim.midooabdaimchat.R;
 import com.midooabdaim.midooabdaimchat.adapter.ViewPagerWithFragmentAdapter;
+import com.midooabdaim.midooabdaimchat.adapter.ViewPagerWithFragmentAdapter1;
 import com.midooabdaim.midooabdaimchat.data.model.User;
 import com.midooabdaim.midooabdaimchat.ui.activity.MainActivity;
 import com.midooabdaim.midooabdaimchat.ui.fragment.BaseFragment;
@@ -55,9 +58,9 @@ public class continerFragment extends BaseFragment {
     @BindView(R.id.fragment_container_tab_layout_id)
     TabLayout fragmentContainerTabLayoutId;
     @BindView(R.id.fragment_container_view_pager)
-    ViewPager fragmentContainerViewPager;
+    ViewPager2 fragmentContainerViewPager;
 
-    private ViewPagerWithFragmentAdapter viewPagerWithFragmentAdapter;
+    private ViewPagerWithFragmentAdapter1 viewPagerWithFragmentAdapter;
     private FirebaseUser firebaseUser;
     private DatabaseReference reference;
 
@@ -75,9 +78,18 @@ public class continerFragment extends BaseFragment {
         unbinder = ButterKnife.bind(this, view);
         initView();
 
-        viewPagerWithFragmentAdapter = new ViewPagerWithFragmentAdapter(getChildFragmentManager(), 1, getActivity());
+        viewPagerWithFragmentAdapter = new ViewPagerWithFragmentAdapter1(this);
+
+        viewPagerWithFragmentAdapter.addPager(new ChatsFragment(), getString(R.string.chats));
+        viewPagerWithFragmentAdapter.addPager(new UsersFragment(), getString(R.string.users));
+        viewPagerWithFragmentAdapter.addPager(new GroupsFragment(), getString(R.string.groups));
+
         fragmentContainerViewPager.setAdapter(viewPagerWithFragmentAdapter);
-        fragmentContainerTabLayoutId.setupWithViewPager(fragmentContainerViewPager);
+
+        // Returns the page title for the top indicator
+        new TabLayoutMediator(fragmentContainerTabLayoutId, fragmentContainerViewPager,
+                (tab, position) -> tab.setText(viewPagerWithFragmentAdapter.titles.get(position))
+        ).attach();
 
         return view;
     }

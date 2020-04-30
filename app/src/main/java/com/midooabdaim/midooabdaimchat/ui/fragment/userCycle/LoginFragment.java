@@ -26,6 +26,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
+import static com.midooabdaim.midooabdaimchat.data.local.SharedPrefrance.USER_PASSWORD;
+import static com.midooabdaim.midooabdaimchat.data.local.SharedPrefrance.saveDataString;
 import static com.midooabdaim.midooabdaimchat.helper.HelperMethod.cleanError;
 import static com.midooabdaim.midooabdaimchat.helper.HelperMethod.customToast;
 import static com.midooabdaim.midooabdaimchat.helper.HelperMethod.disappearKeypad;
@@ -131,6 +133,7 @@ public class LoginFragment extends BaseFragment {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            saveDataString(getActivity(), USER_PASSWORD, password);
                             dismissProgressDialog();
                             customToast(getActivity(), getString(R.string.welcome), false);
                             Intent intent = new Intent(getActivity(), HomeActivity.class);

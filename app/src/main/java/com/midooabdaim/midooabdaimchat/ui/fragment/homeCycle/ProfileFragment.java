@@ -49,6 +49,9 @@ import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static android.app.Activity.RESULT_OK;
+import static com.midooabdaim.midooabdaimchat.data.local.SharedPrefrance.USER_PASSWORD;
+import static com.midooabdaim.midooabdaimchat.data.local.SharedPrefrance.cleanShard;
+import static com.midooabdaim.midooabdaimchat.data.local.SharedPrefrance.loadDataString;
 import static com.midooabdaim.midooabdaimchat.helper.Constant.Default_Image;
 import static com.midooabdaim.midooabdaimchat.helper.Constant.Photo_Data;
 import static com.midooabdaim.midooabdaimchat.helper.Constant.Request_Code;
@@ -60,6 +63,7 @@ import static com.midooabdaim.midooabdaimchat.helper.HelperMethod.getFileExtensi
 import static com.midooabdaim.midooabdaimchat.helper.HelperMethod.onLoadImageFromUrl;
 import static com.midooabdaim.midooabdaimchat.helper.HelperMethod.showProgressDialog;
 import static com.midooabdaim.midooabdaimchat.helper.HelperMethod.validationTextInputLayoutListEmpty;
+import static com.midooabdaim.midooabdaimchat.helper.InternetState.isActive;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -121,7 +125,6 @@ public class ProfileFragment extends BaseFragment {
                     onLoadImageFromUrl(fragmentProfileImageProfile, user.getImageURL(), getActivity());
                 }
 
-
             }
 
             @Override
@@ -162,6 +165,7 @@ public class ProfileFragment extends BaseFragment {
                 break;
             case R.id.fragment_profile_txt_log_out:
                 FirebaseAuth.getInstance().signOut();
+                cleanShard(getActivity());
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
                 getActivity().finish();
@@ -213,7 +217,7 @@ public class ProfileFragment extends BaseFragment {
         textInputLayoutsList.add(dialogConfirmPassword);
         dialogName.getEditText().setHint(getString(R.string.password));
         dialogPassword.getEditText().setHint(getString(R.string.newpassword));
-        dialogPassword.getEditText().setHint(getString(R.string.confirmnewpassword));
+        dialogConfirmPassword.getEditText().setHint(getString(R.string.confirmnewpassword));
         textView.setText(getString(R.string.changepassword));
         buttonChange.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -226,16 +230,53 @@ public class ProfileFragment extends BaseFragment {
 
     private void changePasswordInFirbase() {
         cleanError(textInputLayoutsList);
+        String pass = loadDataString(getActivity(), USER_PASSWORD);
+        String newPassword = dialogPassword.getEditText().getText().toString().trim();
+        String passwordConfirm = dialogConfirmPassword.getEditText().getText().toString().trim();
         if (!validationTextInputLayoutListEmpty(textInputLayoutsList, getString(R.string.empty))) {
             return;
         }
+        if (!dialogName.getEditText().getText().toString().trim().equals(pass)) {
+            customToast(getActivity(), getString(R.string.passwordnotcorrect), true);
+        }
+        if (newPassword.length() < 6) {
+            dialogPassword.setError(getString(R.string.week));
+            return;
+        }
 
+        if (newPassword.equals(passwordConfirm)) {
+            dialogConfirmPassword.setError(getString(R.string.notmatch));
+            return;
+        }
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        user.updatePassword(newPassword)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            //Log.d(TAG, "User password updated.");
+                            customToast(getActivity(), getString(R.string.passwordupdated), false);
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                customToast(getActivity(), getString(R.string.faild), true);
+            }
+        });
+
+        dialog.dismiss();
     }
 
     private void openImage() {
-        Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
-        galleryIntent.setType("image/*");
-        startActivityForResult(galleryIntent, Request_Code);
+        if (!isActive(getActivity())) {
+            customToast(getActivity(), getString(R.string.nointernet), true);
+        } else {
+            Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
+            galleryIntent.setType("image/*");
+            startActivityForResult(galleryIntent, Request_Code);
+        }
     }
 
     @Override

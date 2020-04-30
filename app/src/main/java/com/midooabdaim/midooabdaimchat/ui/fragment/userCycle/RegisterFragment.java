@@ -33,6 +33,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
+import static com.midooabdaim.midooabdaimchat.data.local.SharedPrefrance.USER_PASSWORD;
+import static com.midooabdaim.midooabdaimchat.data.local.SharedPrefrance.saveDataString;
 import static com.midooabdaim.midooabdaimchat.helper.Constant.Default_Image;
 import static com.midooabdaim.midooabdaimchat.helper.Constant.Users_Data;
 import static com.midooabdaim.midooabdaimchat.helper.HelperMethod.cleanError;
@@ -138,6 +140,7 @@ public class RegisterFragment extends BaseFragment {
 
             if (password.equals(passwordconfirm)) {
                 fragmentRegisterTxtInputConfirmPassword.setError(getString(R.string.notmatch));
+                return;
             }
 
             addToDataBase(username, email, password);
@@ -209,8 +212,10 @@ public class RegisterFragment extends BaseFragment {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
+                                                    saveDataString(getActivity(), USER_PASSWORD, password);
                                                     dismissProgressDialog();
                                                     customToast(getActivity(), getString(R.string.createdaccount), false);
+                                                    FirebaseUser user = auth.getCurrentUser();
                                                     Intent intent = new Intent(getActivity(), HomeActivity.class);
                                                     startActivity(intent);
                                                     getActivity().finish();
