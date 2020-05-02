@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -212,6 +213,7 @@ public class ProfileFragment extends BaseFragment {
         dialogConfirmPassword = (TextInputLayout) dialog.findViewById(R.id.dialog_add_txt_input_confirm_password);
         buttonChange = (Button) dialog.findViewById(R.id.dialog_add_btn_add);
         textView = (TextView) dialog.findViewById(R.id.dialog_add_txt_ask_to_add);
+        dialogName.setPasswordVisibilityToggleEnabled(true);
         textInputLayoutsList.add(dialogName);
         textInputLayoutsList.add(dialogPassword);
         textInputLayoutsList.add(dialogConfirmPassword);
@@ -244,7 +246,7 @@ public class ProfileFragment extends BaseFragment {
             return;
         }
 
-        if (newPassword.equals(passwordConfirm)) {
+        if (!newPassword.equals(passwordConfirm)) {
             dialogConfirmPassword.setError(getString(R.string.notmatch));
             return;
         }
@@ -262,7 +264,7 @@ public class ProfileFragment extends BaseFragment {
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                customToast(getActivity(), getString(R.string.faild), true);
+                customToast(getActivity(), e.getMessage(), true);
             }
         });
 

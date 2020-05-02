@@ -33,6 +33,7 @@ import com.midooabdaim.midooabdaimchat.data.model.BlockOrChatList;
 import com.midooabdaim.midooabdaimchat.data.model.Chat;
 import com.midooabdaim.midooabdaimchat.data.model.Token;
 import com.midooabdaim.midooabdaimchat.data.model.User;
+import com.midooabdaim.midooabdaimchat.helper.HelperMethod;
 import com.midooabdaim.midooabdaimchat.ui.activity.BaseActivity;
 import com.midooabdaim.midooabdaimchat.ui.fragment.BaseFragment;
 
@@ -58,8 +59,8 @@ public class ChatsFragment extends BaseFragment implements SearchView.OnQueryTex
     RecyclerView fragmentUsersChatGroupRecyclerView;
     @BindView(R.id.fragment_users_chat_group_tv_no_data)
     TextView fragmentUsersChatGroupTvNoData;
-    @BindView(R.id.fragment_group_fbt_add_group)
-    FloatingActionButton fragmentGroupFbtAddGroup;
+    /*  @BindView(R.id.fragment_group_fbt_add_group)
+      FloatingActionButton fragmentGroupFbtAddGroup;*/
     private LinearLayoutManager linearLayoutManager;
     private FirebaseUser firebaseUser;
     private List<User> users, usersSortedMessage, usersSortedMessageUnDuplicated, getUsersSearched;
@@ -132,7 +133,7 @@ public class ChatsFragment extends BaseFragment implements SearchView.OnQueryTex
         chatListId = new ArrayList<>();
         getUsersSearched = new ArrayList<>();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        fragmentGroupFbtAddGroup.setVisibility(View.GONE);
+        //  fragmentGroupFbtAddGroup.setVisibility(View.GONE);
         linearLayoutManager = new LinearLayoutManager(getActivity());
         fragmentUsersChatGroupRecyclerView.setLayoutManager(linearLayoutManager);
     }
@@ -174,52 +175,56 @@ public class ChatsFragment extends BaseFragment implements SearchView.OnQueryTex
     }
 
     private void sortUserUpdateChat() {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference(Chats_Data);
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                usersSortedMessage.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+        try {
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference(Chats_Data);
+            reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    usersSortedMessage.clear();
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
-                    Chat chat = snapshot.getValue(Chat.class);
+                        Chat chat = snapshot.getValue(Chat.class);
 
-                    assert chat != null;
-                    assert firebaseUser != null;
-                    if (chat.getReceiver().equals(firebaseUser.getUid()) || chat.getSender()
-                            .equals(firebaseUser.getUid())) {
+                        assert chat != null;
+                        assert firebaseUser != null;
+                        if (chat.getReceiver().equals(firebaseUser.getUid()) || chat.getSender()
+                                .equals(firebaseUser.getUid())) {
 
-                        for (User user : users) {
-                            if (chat.getReceiver().equals(user.getId()) || chat.getSender()
-                                    .equals(user.getId())) {
-                                usersSortedMessage.add(0, user);
-                                break;
+                            for (User user : users) {
+                                if (chat.getReceiver().equals(user.getId()) || chat.getSender()
+                                        .equals(user.getId())) {
+                                    usersSortedMessage.add(0, user);
+                                    break;
+                                }
                             }
+
+
                         }
 
 
                     }
 
-
-                }
-
-                //remove duplicate
-                usersSortedMessageUnDuplicated.clear();
-                for (User user : usersSortedMessage) {
-                    if (!usersSortedMessageUnDuplicated.contains(user)) {
-                        usersSortedMessageUnDuplicated.add(user);
+                    //remove duplicate
+                    usersSortedMessageUnDuplicated.clear();
+                    for (User user : usersSortedMessage) {
+                        if (!usersSortedMessageUnDuplicated.contains(user)) {
+                            usersSortedMessageUnDuplicated.add(user);
+                        }
                     }
+
+                    chatAdaptar = new ChatsAdapter(getActivity(), usersSortedMessageUnDuplicated);
+                    fragmentUsersChatGroupRecyclerView.setAdapter(chatAdaptar);
+
                 }
 
-                chatAdaptar = new ChatsAdapter(getActivity(), usersSortedMessageUnDuplicated);
-                fragmentUsersChatGroupRecyclerView.setAdapter(chatAdaptar);
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -315,5 +320,6 @@ public class ChatsFragment extends BaseFragment implements SearchView.OnQueryTex
         fragmentUsersChatGroupRecyclerView.setAdapter(chatAdaptar);
 
     }
+
 
 }

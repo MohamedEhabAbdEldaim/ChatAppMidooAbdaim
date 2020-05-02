@@ -541,14 +541,13 @@ public class MessageFragment extends BaseFragment {
 
 
         reference = FirebaseDatabase.getInstance().getReference(Users_Data).child(firebaseUser.getUid());
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 User user = dataSnapshot.getValue(User.class);
 
                 sendNotification(receiver, user.getUsername(), message);
-
 
             }
 

@@ -1,18 +1,9 @@
 package com.midooabdaim.midooabdaimchat.adapter;
 
 
-import android.app.Activity;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
-
-import com.midooabdaim.midooabdaimchat.R;
-import com.midooabdaim.midooabdaimchat.ui.fragment.homeCycle.viwePager.ChatsFragment;
-import com.midooabdaim.midooabdaimchat.ui.fragment.homeCycle.viwePager.GroupsFragment;
-import com.midooabdaim.midooabdaimchat.ui.fragment.homeCycle.viwePager.UsersFragment;
 
 import java.util.ArrayList;
 

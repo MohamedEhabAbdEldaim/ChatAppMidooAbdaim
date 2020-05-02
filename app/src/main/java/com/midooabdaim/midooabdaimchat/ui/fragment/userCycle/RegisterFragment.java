@@ -138,7 +138,7 @@ public class RegisterFragment extends BaseFragment {
                 return;
             }
 
-            if (password.equals(passwordconfirm)) {
+            if (!password.equals(passwordconfirm)) {
                 fragmentRegisterTxtInputConfirmPassword.setError(getString(R.string.notmatch));
                 return;
             }

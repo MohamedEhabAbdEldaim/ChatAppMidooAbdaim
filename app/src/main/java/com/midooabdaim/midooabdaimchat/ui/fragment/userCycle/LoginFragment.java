@@ -112,15 +112,15 @@ public class LoginFragment extends BaseFragment {
         try {
             if (!isActive(getActivity())) {
                 customToast(getActivity(), getString(R.string.nointernet), true);
+            } else{
+                cleanError(textInputLayoutsList);
+                String email = fragmentLoginTxtInputEmail.getEditText().getText().toString().trim();
+                String password = fragmentLoginTxtInputPassword.getEditText().getText().toString().trim();
+                if (!validationTextInputLayoutListEmpty(textInputLayoutsList, getString(R.string.empty))) {
+                    return;
+                }
+                checkInDataBase(email, password);
             }
-            cleanError(textInputLayoutsList);
-            String email = fragmentLoginTxtInputEmail.getEditText().getText().toString().trim();
-            String password = fragmentLoginTxtInputPassword.getEditText().getText().toString().trim();
-            if (!validationTextInputLayoutListEmpty(textInputLayoutsList, getString(R.string.empty))) {
-                return;
-            }
-            checkInDataBase(email, password);
-
         } catch (Exception e) {
             e.printStackTrace();
         }

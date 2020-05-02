@@ -48,8 +48,8 @@ public class UsersFragment extends BaseFragment implements SearchView.OnQueryTex
     Unbinder unbinder;
     @BindView(R.id.fragment_users_chat_group_recycler_view)
     RecyclerView fragmentUsersChatGroupRecyclerView;
-    @BindView(R.id.fragment_group_fbt_add_group)
-    FloatingActionButton fragmentGroupFbtAddGroup;
+    /* @BindView(R.id.fragment_group_fbt_add_group)
+     FloatingActionButton fragmentGroupFbtAddGroup;*/
     @BindView(R.id.fragment_users_chat_group_tv_no_data)
     TextView fragmentUsersChatGroupTvNoData;
     private LinearLayoutManager linearLayoutManager;
@@ -79,8 +79,8 @@ public class UsersFragment extends BaseFragment implements SearchView.OnQueryTex
     @SuppressLint("RestrictedApi")
     private void initView() {
         users = new ArrayList<>();
-        getUsersSearched=new ArrayList<>();
-        fragmentGroupFbtAddGroup.setVisibility(View.GONE);
+        getUsersSearched = new ArrayList<>();
+        // fragmentGroupFbtAddGroup.setVisibility(View.GONE);
         linearLayoutManager = new LinearLayoutManager(getActivity());
         fragmentUsersChatGroupRecyclerView.setLayoutManager(linearLayoutManager);
         readUsers();
@@ -122,6 +122,7 @@ public class UsersFragment extends BaseFragment implements SearchView.OnQueryTex
             }
         });
     }
+
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.search, menu);
@@ -134,6 +135,7 @@ public class UsersFragment extends BaseFragment implements SearchView.OnQueryTex
         searchView.setOnQueryTextListener(UsersFragment.this);
         super.onCreateOptionsMenu(menu, inflater);
     }
+
     @Override
     public void onStart() {
         intialFragment();
@@ -145,6 +147,7 @@ public class UsersFragment extends BaseFragment implements SearchView.OnQueryTex
         unbinder.unbind();
         super.onStop();
     }
+
     @Override
     public void BackPressed() {
         getActivity().finish();
@@ -159,7 +162,7 @@ public class UsersFragment extends BaseFragment implements SearchView.OnQueryTex
 
     @Override
     public boolean onQueryTextChange(String newText) {
-       search(newText);
+        search(newText);
         return true;
     }
 

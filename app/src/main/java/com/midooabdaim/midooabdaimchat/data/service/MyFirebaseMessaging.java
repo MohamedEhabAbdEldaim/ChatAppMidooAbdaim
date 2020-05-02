@@ -40,7 +40,7 @@ public class MyFirebaseMessaging extends FirebaseMessagingService {
 
         assert sented != null;
 
-        if(firebaseUser != null && sented.equals(firebaseUser.getUid())){
+        if (firebaseUser != null && sented.equals(firebaseUser.getUid())) {
 
             sendNotification(remoteMessage);
 
@@ -57,8 +57,6 @@ public class MyFirebaseMessaging extends FirebaseMessagingService {
 
         String title = remoteMessage.getData().get("title");
 
-        String group = remoteMessage.getData().get("group");
-
         RemoteMessage.Notification notification = remoteMessage.getNotification();
 
         int j = Integer.parseInt(user.replaceAll("[\\D]", ""));
@@ -69,19 +67,10 @@ public class MyFirebaseMessaging extends FirebaseMessagingService {
 
         Bundle bundle;
 
-        if (group != null) {
 
-            bundle = new Bundle();
-            bundle.putBoolean("GroupMessageFragment", true);
-            bundle.putString("groupId", group);
-
-        } else {
-
-            bundle = new Bundle();
-            bundle.putBoolean("MessageFragment", true);
-            bundle.putString("userId", user);
-
-        }
+        bundle = new Bundle();
+        bundle.putBoolean("MessageFragment", true);
+        bundle.putString("userId", user);
 
 
         intent.putExtras(bundle);

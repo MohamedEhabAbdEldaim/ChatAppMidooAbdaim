@@ -2,21 +2,14 @@ package com.midooabdaim.midooabdaimchat.adapter;
 
 
 import android.app.Activity;
-import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.midooabdaim.midooabdaimchat.R;
 import com.midooabdaim.midooabdaimchat.ui.fragment.homeCycle.viwePager.ChatsFragment;
-import com.midooabdaim.midooabdaimchat.ui.fragment.homeCycle.viwePager.GroupsFragment;
 import com.midooabdaim.midooabdaimchat.ui.fragment.homeCycle.viwePager.UsersFragment;
-import com.midooabdaim.midooabdaimchat.ui.fragment.homeCycle.viwePager.continerFragment;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ViewPagerWithFragmentAdapter extends FragmentPagerAdapter {
 
@@ -32,7 +25,7 @@ public class ViewPagerWithFragmentAdapter extends FragmentPagerAdapter {
     // Returns total number of pages
     @Override
     public int getCount() {
-        return 3;
+        return 2;
     }
 
     // Returns the fragment to display for that page
@@ -43,8 +36,7 @@ public class ViewPagerWithFragmentAdapter extends FragmentPagerAdapter {
                 return new ChatsFragment();
             case 1:
                 return new UsersFragment();
-            case 2:
-                return new GroupsFragment();
+
             default:
                 return null;
         }
@@ -58,8 +50,6 @@ public class ViewPagerWithFragmentAdapter extends FragmentPagerAdapter {
                 return activity.getString(R.string.chats);
             case 1:
                 return activity.getString(R.string.users);
-            case 2:
-                return activity.getString(R.string.groups);
             default:
                 return "null";
         }

@@ -28,6 +28,7 @@ import com.midooabdaim.midooabdaimchat.R;
 import com.midooabdaim.midooabdaimchat.adapter.ViewPagerWithFragmentAdapter;
 import com.midooabdaim.midooabdaimchat.adapter.ViewPagerWithFragmentAdapter1;
 import com.midooabdaim.midooabdaimchat.data.model.User;
+import com.midooabdaim.midooabdaimchat.helper.HelperMethod;
 import com.midooabdaim.midooabdaimchat.ui.activity.MainActivity;
 import com.midooabdaim.midooabdaimchat.ui.fragment.BaseFragment;
 import com.midooabdaim.midooabdaimchat.ui.fragment.homeCycle.ProfileFragment;
@@ -40,6 +41,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.midooabdaim.midooabdaimchat.helper.Constant.Default_Image;
 import static com.midooabdaim.midooabdaimchat.helper.Constant.Users_Data;
+import static com.midooabdaim.midooabdaimchat.helper.HelperMethod.closeFragment;
 import static com.midooabdaim.midooabdaimchat.helper.HelperMethod.customToast;
 import static com.midooabdaim.midooabdaimchat.helper.HelperMethod.onLoadImageFromUrl;
 import static com.midooabdaim.midooabdaimchat.helper.HelperMethod.replaceFragment;
@@ -82,7 +84,6 @@ public class continerFragment extends BaseFragment {
 
         viewPagerWithFragmentAdapter.addPager(new ChatsFragment(), getString(R.string.chats));
         viewPagerWithFragmentAdapter.addPager(new UsersFragment(), getString(R.string.users));
-        viewPagerWithFragmentAdapter.addPager(new GroupsFragment(), getString(R.string.groups));
 
         fragmentContainerViewPager.setAdapter(viewPagerWithFragmentAdapter);
 
@@ -101,15 +102,13 @@ public class continerFragment extends BaseFragment {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference(Users_Data).child(firebaseUser.getUid());
 
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 User user = dataSnapshot.getValue(User.class);
-
                 fragmentContainerTxtUserName.setText(user.getUsername());
-
                 if (user.getImageURL().equals(Default_Image)) {
                     fragmentContainerImgUser.setImageResource(R.drawable.ic_imgprofile);
                 } else {
@@ -140,6 +139,11 @@ public class continerFragment extends BaseFragment {
         super.onStop();
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        HelperMethod.closeFragment(getActivity().getSupportFragmentManager(),this);
+    }
 
     @Override
     public void BackPressed() {

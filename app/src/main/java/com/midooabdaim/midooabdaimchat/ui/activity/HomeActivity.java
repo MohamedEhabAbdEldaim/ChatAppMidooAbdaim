@@ -21,15 +21,12 @@ public class HomeActivity extends BaseActivity {
 
         Intent intent = getIntent();
         boolean message = intent.getBooleanExtra("MessageFragment", false);
-        boolean messageGroup = intent.getBooleanExtra("GroupMessageFragment", false);
 
 
         if (message) {
             MessageFragment messageFragment = new MessageFragment();
             messageFragment.userId = intent.getStringExtra("userId");
             replaceFragment(getSupportFragmentManager(), R.id.home_activity_fl_id, messageFragment);
-        } else if (messageGroup) {
-
         } else {
             replaceFragment(getSupportFragmentManager(), R.id.home_activity_fl_id, new continerFragment());
         }
